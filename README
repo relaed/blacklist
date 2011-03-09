@@ -5,9 +5,9 @@ To create and fill iptables chain use shell script like:
 
 iptables -N blacklist 2>/dev/null
 iptables -F blacklist
-for net in `egrep -v '^(#|$)' blacklist.txt`;
-  do iptables -A blacklist -s $net;
-  do iptables -A blacklist -d $net;
+for net in `egrep -v '^(#|$)' blacklist.txt`; do
+  iptables -A blacklist -s $net -j DROP;
+  iptables -A blacklist -d $net -j DROP;
 done
 
 
