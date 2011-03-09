@@ -23,7 +23,7 @@ while (<BLACKLIST>) {
 	if ( m/^#\s+(.*)/ ) {
 		# comment - use for network description
 		$net_descr = $1;
-	} elsif ( m/^\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}\/(16|24|32)/ ) {
+	} elsif ( m/^\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}\/\d{1,2}/ ) {
 		my $isInRange = Network::IPv4Addr::ipv4_in_network($_, $ip_to_check);		
 		if ( $isInRange ) {
 			print("$ip_to_check found in $net_descr\n");
