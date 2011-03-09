@@ -5,8 +5,12 @@ To create and fill iptables chain use shell script like:
 
 iptables -N blacklist 2>/dev/null
 iptables -F blacklist
-for net in `egrep -v '^(#|$)' blacklist.txt`; do iptables -A blacklist -s $net; done
+for net in `egrep -v '^(#|$)' blacklist.txt`;
+  do iptables -A blacklist -s $net;
+  do iptables -A blacklist -d $net;
+done
 
 
 Now with blacklist chain filled add jump to blacklist where appropriate
 iptables -A INPUT -j blacklist
+iptables -A OUTPUT -j blacklist
