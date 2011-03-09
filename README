@@ -1,0 +1,12 @@
+File blacklist.txt holds network ranges of known unsecure networks.
+Hash char # is used for comments.
+
+To create and fill iptables chain use shell script like:
+
+iptables -N blacklist 2>/dev/null
+iptables -F blacklist
+for net in `egrep -v '^(#|$)' blacklist.txt`; do iptables -A blacklist -s $net; done
+
+
+Now with blacklist chain filled add jump to blacklist where appropriate
+iptables -A INPUT -j blacklist
