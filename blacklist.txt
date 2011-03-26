@@ -4,8 +4,8 @@
 # I3D
 213.163.64.0/19
 
-# othelo
-89.238.128.0/18
+# ohtele
+# 89.238.128.0/18 // FIXME: more exact colocation only network
 
 # Leaseweb
 62.212.64.0/24
